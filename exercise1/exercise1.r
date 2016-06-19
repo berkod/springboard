@@ -29,4 +29,12 @@ product_df <-
     product_name = c("Smartphone", "TV", "Laptop", "Tablet"),
     product_code = c("p", "v", "x", "q")
   )
-data <- left_join(data, product_df, by ='product_code')
+data <- left_join(data, product_df, by = 'product_code')
+
+# 4: Add full address for geocoding
+data <-
+  unite(data,
+        'full_address',
+        address:country,
+        sep = ',',
+        remove = FALSE) %>% mutate()
