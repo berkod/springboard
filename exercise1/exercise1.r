@@ -38,3 +38,12 @@ data <-
         address:country,
         sep = ',',
         remove = FALSE) %>% mutate()
+
+# 5: Create dummy variables for company and product category
+data <-
+  data %>% mutate(
+    company_philips = ifelse(company == 'philips', 1, 0),
+    company_akzo = ifelse(company == 'akzo', 1, 0),
+    company_van_houten = ifelse(company == 'van houten', 1, 0),
+    company_unilever = ifelse(company == 'unilever', 1, 0)
+  )
