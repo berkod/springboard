@@ -47,3 +47,15 @@ data <-
     company_van_houten = ifelse(company == 'van houten', 1, 0),
     company_unilever = ifelse(company == 'unilever', 1, 0)
   )
+
+data <-
+  data %>% mutate(
+    product_smartphone = ifelse(product_name == 'Smartphone', 1, 0),
+    product_tv = ifelse(product_name == 'TV', 1, 0),
+    product_laptop = ifelse(product_name == 'Laptop', 1, 0),
+    product_tablet = ifelse(product_name == 'Tablet', 1, 0)
+  )
+
+# output cleaned file
+
+write.csv(final_data, file = "refine_clean.csv")
