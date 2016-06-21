@@ -24,6 +24,10 @@ titanic_df <-
   titanic_df  %>% mutate(boat = ifelse(boat == '', 'NA', as.character.factor(boat)))
 titanic_df <- titanic_df %>% mutate(boat = factor(boat))
 
+# 4: Cabin
+titanic_df  <-
+  titanic_df  %>% mutate(has_cabin_number = ifelse(cabin == '', 0, 1))
+
 # output cleaned file
 
-write.csv(titanic_df, file = "refine_clean.csv")
+write.csv(titanic_df, file = "titanic_clean.csv")
