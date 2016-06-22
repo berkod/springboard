@@ -14,7 +14,6 @@ titanic_df <- titanic_df %>% mutate(embarked = factor(embarked))
 # You could do median, which in this case would be younger than the mean by almost two years
 # You could also process the mean/media age by group: Identify families by last name/place of irigin
 
-# TODO: IT's rounding the data for some reason
 mean_age <- mean(titanic_df$age, na.rm = TRUE)
 titanic_df <-
   titanic_df  %>% mutate(age = ifelse(is.na(age), mean_age, age))
