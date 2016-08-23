@@ -1,0 +1,50 @@
+---
+title: "datacamp-titanic"
+author: "dan berko"
+date: "August 22, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+library(titanic)
+titanic <- titanic_train
+```
+
+## Note
+
+The actual titanic dataframe used in the Datacamp exercise is sightly different than the Hendricks titanic data set used here. The code still runs, but the number of observations is different.
+
+
+## Check out the structure of titanic
+ 
+```{r}
+ str(titanic)
+
+```
+
+## First, have a look at the distribution of sexes within the classes of the ship.
+
+```{r}
+ggplot(titanic, aes(x=factor(Pclass), fill=factor(Sex))) + geom_bar(position='dodge') 
+
+```
+
+## These bar plots won't help you estimate your chances of survival. Copy the previous bar plot, but this time add a facet_grid() layer: ". ~ Survived".
+
+```{r}
+ggplot(titanic, aes(x=factor(Pclass), fill=factor(Sex))) + geom_bar(position='dodge') + facet_grid(. ~ Survived)
+```
+
+## Position jitter (use below)
+
+```{r}
+posn.j <- position_jitter(0.5, 0)
+```
+
+## You want to include the final variable in the plot, Age
+
+```{r}
+ggplot(titanic, aes(x=factor(Pclass), y=Age, col=factor(Sex))) + geom_jitter(size=3, alpha=0.5, position=posn.j) + facet_grid(. ~ Survived)
+```
